@@ -1,40 +1,40 @@
 =begin
-Copyright 2010, Author
+Copyright 2014, Yurij Kulchevich
 All Rights Reserved
 THIS SOFTWARE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES,
 INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 FITNESS FOR A PARTICULAR PURPOSE.
-License: AuthorsLicenseStatement
-Author: AuthorName
-Organization: AuthorAffiliationOrOrganizationIfAny
-Name: ScriptName
-Version: ScriptVersion
-SU Version: MinimumSketchUpVersion
-Date: Date
-Description: ScriptDescription
-Usage: ScriptUsageInstructions
+License: GPL V.3
+Author: Yurij Kulchevich
+Organization:
+Name: unique_layers_colors
+Version: 0.1
+SU Version: 2014
+Date: 27.09.2014
+Description: Plugin make unique all colors of layers in model
+Usage: see README
 History:
-1.000 YYYY-MM-DD Description of changes
+0.1 27-September-2014 First version
 =end
 
 require "sketchup.rb"
 # Main code (start module name with capital letter)
 
-module My_module
+module Layers_colors
 
-def self.my_method
+def self.make_unique_colors
   # do something...
 end
 
-def self.my_second_method
+def self.layers_colors_list
 # do something...
 end
 
 end
 # Create menu items
 unless file_loaded?(__FILE__)
-  mymenu = UI.menu("Plugins").add_submenu("My Plugin Collection")
-  mymenu.add_item("My Tool 1") {My_module::my_method}
-  mymenu.add_item("My Tool 2") {My_module::my_second_method}
+  mymenu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
+  mymenu.add_item("Make Unique Colors") {Layers_colors::make_unique_colors}
+  mymenu.add_item("List of Colors") {Layers_colors::layers_colors_list}
   file_loaded(__FILE__)
 end
