@@ -22,6 +22,10 @@ require "sketchup.rb"
 
 module Layers_colors
 
+def self.create_layer_with_unique_color
+  # do something
+end
+
 def self.check_layers_colors_list
   # do something...
 end
@@ -46,8 +50,9 @@ end
 # Create menu items
 unless file_loaded?(__FILE__)
   unique_layers_colors_menu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
-  unique_layers_colors_menu.add_item("Check of Layers Colors") {Layers_colors::check_layers_colors_list}
-  unique_layers_colors_menu.add_item("Make Unique Colors") {Layers_colors::make_unique_colors}
+  unique_layers_colors_menu.add_item("Create layer with unique color") {Layers_colors::create_layer_with_unique_color}
+  unique_layers_colors_menu.add_item("Check of layers colors") {Layers_colors::check_layers_colors_list}
+  unique_layers_colors_menu.add_item("Make Unique colors") {Layers_colors::make_unique_colors}
   unique_layers_colors_menu.add_item("Color by material") {Layers_colors::color_by_material}
   unique_layers_colors_menu.add_item("Color by layer") {Layers_colors::color_by_layer}
   unique_layers_colors_menu.add_item("Help") {Layers_colors::help_information}
