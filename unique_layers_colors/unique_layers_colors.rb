@@ -24,28 +24,39 @@ require "sketchup.rb"
 module Layers_colors
 
 def self.create_layer_with_unique_color
+  # button in toolbars
   # Method create new layer with unique color.
   # Analyse present in models layers and generate random unique color
 end
 
 def self.check_layers_colors_list
-  # do something
+  # button in toolbars
+  # Find in model not unique layers.
+  # If NOT find
+  #   send message "All layers in model have unique color"
+  # If find, send message "Some of layers have same color"
+  #   print list of layers groups with same color and print this color with name or RGB pallet.
+  #   run "method make_unique_colors" if user want to make unique colors for all layers in this list (manual or random)
 end
 
 def self.make_unique_colors
-  # do something
+  # button in toolbars
+  # make unique colors random or manual for all model or some part of layers with not unique colors
 end
 
 def self.color_by_material
-  # do something
+  # button in toolbars
+  # toogle in style of active scene color by material or not
 end
 
 def self.color_by_layer
-  # do something
+  # button in toolbars
+  # toogle in style of active scene color by layer or not
 end
 
 def self.help_information
-  # do something
+  # button in toolbars
+  # open README PDF-file  or help content in messagebox
 end
 
 end
