@@ -1,7 +1,7 @@
 # Loader for unique_layers_colors/unique_layers_colors.rb
 
-require "sketchup.rb"
-require "extensions.rb"
+require 'sketchup.rb'
+require 'extensions.rb'
 
 if Sketchup.version.to_i >= 14
   unique_layers_colors = SketchupExtension.new "Unique Layers Colors", "unique_layers_colors/unique_layers_colors.rb"

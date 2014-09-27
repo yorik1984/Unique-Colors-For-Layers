@@ -17,7 +17,7 @@ History:
 0.1 27-September-2014 First version
 =end
 
-require "sketchup.rb"
+require 'sketchup.rb'
 # Main code (start module name with capital letter)
 
 
