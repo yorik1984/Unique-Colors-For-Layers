@@ -20,18 +20,20 @@ History:
 require "sketchup.rb"
 # Main code (start module name with capital letter)
 
+
 module Layers_colors
 
 def self.create_layer_with_unique_color
-  # do something
+  # Method create new layer with unique color.
+  # Analyse present in models layers and generate random unique color
 end
 
 def self.check_layers_colors_list
-  # do something...
+  # do something
 end
 
 def self.make_unique_colors
-  # do something...
+  # do something
 end
 
 def self.color_by_material
@@ -47,6 +49,7 @@ def self.help_information
 end
 
 end
+
 # Create menu items
 unless file_loaded?(__FILE__)
   unique_layers_colors_menu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
