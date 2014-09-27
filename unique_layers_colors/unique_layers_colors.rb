@@ -33,8 +33,8 @@ end
 end
 # Create menu items
 unless file_loaded?(__FILE__)
-  mymenu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
-  mymenu.add_item("Make Unique Colors") {Layers_colors::make_unique_colors}
-  mymenu.add_item("List of Colors") {Layers_colors::layers_colors_list}
+  unique_layers_colors_menu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
+  unique_layers_colors_menu.add_item("Make Unique Colors") {Layers_colors::make_unique_colors}
+  unique_layers_colors_menu.add_item("List of Colors") {Layers_colors::layers_colors_list}
   file_loaded(__FILE__)
 end
