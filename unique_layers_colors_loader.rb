@@ -11,5 +11,5 @@ if Sketchup.version.to_i >= 14
   unique_layers_colors.description = "Plugin makes unique all colors of layers in model"
   Sketchup.register_extension unique_layers_colors, true
 else
-  UI.messagebox("Plugin \"Unique Layers Colors\" don't work in this version of Sketchup. You must install Sketchup 2014")
+  UI.messagebox("Plugin \"Unique Layers Colors\" doesn't work in this version of Sketchup. You must install Sketchup 2014")
 end
