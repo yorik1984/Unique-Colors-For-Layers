@@ -22,13 +22,31 @@ require 'sketchup.rb'
 
 module LayersColors
 
-def layers_color_to_rgb(color_of_layers)
-  # For example Color(000, 111, 222, 255)
-  color_string = color_of_layers.to_s
-  rgbR = color_string[6...9]    # => 000
-  rgbG = color_string[11...14]  # => 111
-  rgbB = color_string[16...19]  # => 222
+def layers_color_to_rgb_value(color_of_layer)
+  # For example: "Color(000, 111, 222, 255)" => "000, 111, 222"
+  color_string = color_of_layer.color.to_s
+  rgbR = color_string[6..8]    # => 000
+  rgbG = color_string[11..13]  # => 111
+  rgbB = color_string[16..18]  # => 222
   result_string = "#{rgbR}, #{rgbG}, #{rgbB}"
+end
+
+def all_layers_color_to_rgb_value(layer_with_full_color_value)
+  result_layers = Array.new(layer_with_full_color_value.count)
+  layer_with_full_color_value.count.times { | i | result_layers[i] = layers_color_to_rgb_value(layer_with_full_color_value[i]) }
+  result_layers
+end
+
+def random_unique_layers_colors(layers_of_model)
+  layers_of_colors = Array.new(layers_of_model.count)
+  layers_of_colors = all_layers_color_to_rgb_value(layers_of_model)
+    1.step(layers_of_colors.count-1, 1) do |i|
+    while layers_of_colors.find_all{ |elem| elem == layers_color_to_rgb_value(layers_of_model[i]) }.size != 0 && layers_of_colors.count(layers_of_colors[i]) > 1
+      layers_of_model[i].color = Sketchup::Color.new(rand(0..255), rand(0..255), rand(0..255))
+      puts "while"
+    end
+  end
+  layers_of_model
 end
 
 def self.check_layers_colors_list
@@ -41,32 +59,22 @@ def self.check_layers_colors_list
   #   run "method make_unique_colors" if user want to make unique colors for all layers in this list (manual or random)
 
   model = Sketchup.active_model
-  model_path = File.dirname(model.path)
-  if model_path == "."
-    UI.messagebox"Please, save this 'Untitled' new model before running this !\nExiting ..."
-  end
   active_display_color_by_layer = model.rendering_options["DisplayColorByLayer"]
-  if model.rendering_options["DisplayColorByLayer"] == false
-    model.rendering_options["DisplayColorByLayer"] = true
-  end
   active_edge_color_mode = model.rendering_options["EdgeColorMode"]
-  if model.rendering_options["EdgeColorMode"] != 0
-    model.rendering_options["EdgeColorMode"] = 0
-  end
+  model.rendering_options["DisplayColorByLayer"] = true
+  model.rendering_options["EdgeColorMode"] = 0
 
   layers = model.layers
   # Compare two arrays
-  layers_colors = Array.new(layers.count)
-  layers.count.times { | i | layers_colors[i] = layers_color_to_rgb(layers[i].color) }
-  layers_unique_colors = layers_colors.uniq
-
-  # TEST ----------------------------------------------------------------------
-  if layers_unique_colors == layers_colors
-    puts "Layers same"
+  layers_rgb_colors = Array.new(layers.count)
+  layers_rgb_colors = all_layers_color_to_rgb_value(layers)
+  if layers_rgb_colors != layers_rgb_colors.uniq
+    difference = layers_rgb_colors.size - layers_rgb_colors.uniq.size
+    answer = UI.messagebox("Model has #{difference} layer(s) with non-unique color(s). Fix it?", MB_YESNO)
+    layers = random_unique_layers_colors(layers) if answer  == IDYES
   else
-    puts "Layers NOT same"
+    UI.messagebox ("All layers in model have unique colors")
   end
-  # TEST ----------------------------------------------------------------------
 
   # Reset to active render options settings
   model.rendering_options["DisplayColorByLayer"] = active_display_color_by_layer
@@ -74,13 +82,13 @@ def self.check_layers_colors_list
 
 end
 
-def self.create_layer_with_unique_color
+def self.create_layers_with_unique_colors
   # button in toolbars
   # Method create new layer with unique color.
   # Analyse present in models layers and generate random unique color
 end
 
-def self.make_unique_layers_colors
+def self.make_unique_layers_color
   # button in toolbars
   # make unique colors random or manual for all model or some part of layers with not unique colors
 end
@@ -96,8 +104,8 @@ end
 unless file_loaded?(__FILE__)
   unique_layers_colors_menu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
   unique_layers_colors_menu.add_item("Check of layers colors") {LayersColors::check_layers_colors_list}
-  unique_layers_colors_menu.add_item("Create layer with unique color") {LayersColors::create_layer_with_unique_color}
-  unique_layers_colors_menu.add_item("Make unique layers colors") {LayersColors::make_unique_layers_colors}
+  unique_layers_colors_menu.add_item("Create layer with unique color") {LayersColors::create_layers_with_unique_colors}
+  unique_layers_colors_menu.add_item("Make unique layers colors") {LayersColors::make_unique_layers_color}
   unique_layers_colors_menu.add_item("Help") {LayersColors::help_information}
   file_loaded(__FILE__)
 end
