@@ -21,7 +21,7 @@ require 'sketchup.rb'
 
 module LayersColors
 
-def layers_color_to_rgb_value(color_of_layer)
+def self.layers_color_to_rgb_value(color_of_layer)
   # For example: "Color(000, 111, 222, 255)" => "000, 111, 222"
   color_string = color_of_layer.color.to_s
   rgbR = color_string[6..8]    # => 000
@@ -30,13 +30,13 @@ def layers_color_to_rgb_value(color_of_layer)
   result_string = "#{rgbR}, #{rgbG}, #{rgbB}"
 end
 
-def all_layers_color_to_rgb_value(layer_with_full_color_value)
+def self.all_layers_color_to_rgb_value(layer_with_full_color_value)
   result_layers = Array.new(layer_with_full_color_value.count)
   layer_with_full_color_value.count.times { | i | result_layers[i] = layers_color_to_rgb_value(layer_with_full_color_value[i]) }
   result_layers
 end
 
-def random_unique_layers_colors(layers_of_model)
+def self.random_unique_layers_colors(layers_of_model)
   layers_of_colors = Array.new(layers_of_model.count)
   layers_of_colors = all_layers_color_to_rgb_value(layers_of_model)
     1.step(layers_of_colors.count-1, 1) do |i|
@@ -47,7 +47,7 @@ def random_unique_layers_colors(layers_of_model)
   layers_of_model
 end
 
-def random_all_layers_colors(layers_of_model)
+def self.random_all_layers_colors(layers_of_model)
   layers_of_colors = Array.new(layers_of_model.count)
   layers_of_colors = all_layers_color_to_rgb_value(layers_of_model)
     1.step(layers_of_colors.count-1, 1) do |i|
