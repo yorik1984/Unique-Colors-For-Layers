@@ -104,7 +104,10 @@ def self.create_new_layer_with_unique_color
   model = Sketchup.active_model
   layers = model.layers
   template_name = layers.unique_name "Layer"
-  new_layer = layers.add template_name
+  prompts = ["Layer"]
+  defaults = [template_name]
+  input = UI.inputbox(prompts, defaults, "New layer with unique color")
+  new_layer = layers.add input[0]
   random_unique_layers_colors(layers)
 end
 
