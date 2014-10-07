@@ -8,7 +8,7 @@ Unique Layers Colors
 Description
 -----------
 Ruby plugin for Sketchup 2014 to make unique all colors of layers in model.
-This plugin can help to organize work with layers with more efficiency. Especially when you need export to CAD Sketchup model. It works with colors of layers. Plugin do nothing only with "Layer0". Colors of other layers ca be modify.
+This plugin can help to organize work with layers with more efficiency. Especially when you need export to CAD Sketchup model. It works with colors of layers. Plugin do nothing only with "Layer0". Colors of other layers can be modify.
 
 * Analysis of the model for the presence of layers colors
 * Randomize colors of all or non-unique layers
