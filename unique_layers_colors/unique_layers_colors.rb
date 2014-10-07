@@ -120,6 +120,52 @@ end # module LayersColors
 
 # Create menu items
 unless file_loaded?(__FILE__)
+  # Create toolbar
+  plugins = Sketchup.find_support_file "Plugins/"
+  folder = "unique_layers_colors"
+  icon_s_check_layers_colors = File.join(plugins, folder, "check_layers_colors_16.png")
+  icon_check_layers_colors = File.join(plugins, folder, "check_layers_colors_24.png")
+  icon_s_make_unique_layers_color = File.join(plugins, folder, "make_unique_layers_color_16.png")
+  icon_make_unique_layers_color = File.join(plugins, folder, "make_unique_layers_color_24.png")
+  icon_s_create_new_layer_with_unique_color = File.join(plugins, folder, "create_new_layer_with_unique_color_16.png")
+  icon_create_new_layer_with_unique_color = File.join(plugins, folder, "create_new_layer_with_unique_color_24.png")
+  icon_s_help_information = File.join(plugins, folder, "help_16.png")
+  icon_help_information = File.join(plugins, folder, "help_24.png")
+  unique_layers_colors_tb = UI::Toolbar.new("Unique Layers Colors")
+
+  # Add item "Check of layers colors"
+  check_layers_colors_cmd = UI::Command.new("Check of layers colors"){ LayersColors::check_layers_colors }
+  check_layers_colors_cmd.small_icon = icon_s_check_layers_colors
+  check_layers_colors_cmd.large_icon = icon_check_layers_colors
+  check_layers_colors_cmd.tooltip = "Check of layers colors"
+  check_layers_colors_cmd.status_bar_text = "Check of layers colors"
+  unique_layers_colors_tb.add_item(check_layers_colors_cmd)
+
+  # Add item "Make unique layers colors"
+  make_unique_layers_color_cmd = UI::Command.new("Make unique layers colors"){ LayersColors::make_unique_layers_color }
+  make_unique_layers_color_cmd.small_icon = icon_s_make_unique_layers_color
+  make_unique_layers_color_cmd.large_icon = icon_make_unique_layers_color
+  make_unique_layers_color_cmd.tooltip = "Make unique layers colors"
+  make_unique_layers_color_cmd.status_bar_text = "Make unique layers colors"
+  unique_layers_colors_tb.add_item(make_unique_layers_color_cmd)
+
+  # Add item "Create new layer with unique color"
+  create_new_layer_with_unique_color_cmd = UI::Command.new("Create new layer with unique color"){ LayersColors::create_new_layer_with_unique_color }
+  create_new_layer_with_unique_color_cmd.small_icon = icon_s_create_new_layer_with_unique_color
+  create_new_layer_with_unique_color_cmd.large_icon = icon_create_new_layer_with_unique_color
+  create_new_layer_with_unique_color_cmd.tooltip = "Create new layer with unique color"
+  create_new_layer_with_unique_color_cmd.status_bar_text = "Create new layer with unique color"
+  unique_layers_colors_tb.add_item(create_new_layer_with_unique_color_cmd)
+
+  # Add item "Help"
+  help_cmd = UI::Command.new("Help"){ LayersColors::help_information }
+  help_cmd.small_icon = icon_s_help_information
+  help_cmd.large_icon = icon_help_information
+  help_cmd.tooltip = "Help"
+  help_cmd.status_bar_text = "Help"
+  unique_layers_colors_tb.add_item(help_cmd)
+
+  # Create menu
   unique_layers_colors_menu = UI.menu("Plugins").add_submenu("Unique Layers Colors")
   unique_layers_colors_menu.add_item("Check of layers colors") {LayersColors::check_layers_colors}
   unique_layers_colors_menu.add_item("Make unique layers colors") {LayersColors::make_unique_layers_color}
