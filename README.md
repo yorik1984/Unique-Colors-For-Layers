@@ -30,4 +30,4 @@ You can find in main menu or in toolbar
 Installation
 -----------
 Plugin works only in Sketchup version 14. Update Sketchup before install.
-[Instalation plugins in Sketchup](http://help.sketchup.com/en/article/38583)
+[Installation plugins in Sketchup](http://help.sketchup.com/en/article/38583)
