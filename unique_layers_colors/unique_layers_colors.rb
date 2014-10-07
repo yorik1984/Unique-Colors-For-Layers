@@ -75,7 +75,7 @@ def self.check_layers_colors
   layers_rgb_colors = all_layers_color_to_rgb_value(layers)
   if layers_rgb_colors != layers_rgb_colors.uniq
     difference = layers_rgb_colors.size - layers_rgb_colors.uniq.size
-    answer = UI.messagebox("Model has " + difference.to_s + " layer(s) with non-unique color(s). Fix it?", MB_YESNO)
+    answer = UI.messagebox("Model has #{difference.to_s} layer(s) with non-unique color(s). Fix it?", MB_YESNO)
     layers = random_unique_layers_colors(layers) if answer  == IDYES
   else
     UI.messagebox ("All layers in model have unique colors")
