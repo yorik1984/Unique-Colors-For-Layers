@@ -14,7 +14,7 @@
 # Description: Plugin makes unique all colors of layers in model
 # Usage: see README
 # History:
-# 0.1 27-September-2014 First version
+# 1.0 07-October-2014 Initial release
 #------------------------------------------------------------------------------
 
 require 'sketchup.rb'
@@ -31,12 +31,14 @@ def self.layers_color_to_rgb_value(color_of_layer)
 end
 
 def self.all_layers_color_to_rgb_value(layer_with_full_color_value)
+  # Get RGB colors of all layers in array by method "layers_color_to_rgb_value"
   result_layers = Array.new(layer_with_full_color_value.count)
   layer_with_full_color_value.count.times { | i | result_layers[i] = layers_color_to_rgb_value(layer_with_full_color_value[i]) }
   result_layers
 end
 
 def self.random_unique_layers_colors(layers_of_model)
+  # Randomize only non-unique layers colors
   layers_of_colors = Array.new(layers_of_model.count)
   layers_of_colors = all_layers_color_to_rgb_value(layers_of_model)
     1.step(layers_of_colors.count-1, 1) do |i|
@@ -48,6 +50,7 @@ def self.random_unique_layers_colors(layers_of_model)
 end
 
 def self.random_all_layers_colors(layers_of_model)
+  # Randomize all layers colors in model with unique value
   layers_of_colors = Array.new(layers_of_model.count)
   layers_of_colors = all_layers_color_to_rgb_value(layers_of_model)
     1.step(layers_of_colors.count-1, 1) do |i|
@@ -59,6 +62,8 @@ def self.random_all_layers_colors(layers_of_model)
 end
 
 def self.check_layers_colors
+  # Check model for non-unique layers colors
+  # If not unique, user can fix it
   model = Sketchup.active_model
   layers = model.layers
   active_display_color_by_layer = model.rendering_options["DisplayColorByLayer"]
@@ -70,7 +75,7 @@ def self.check_layers_colors
   layers_rgb_colors = all_layers_color_to_rgb_value(layers)
   if layers_rgb_colors != layers_rgb_colors.uniq
     difference = layers_rgb_colors.size - layers_rgb_colors.uniq.size
-    answer = UI.messagebox("Model has #{difference} layer(s) with non-unique color(s). Fix it?", MB_YESNO)
+    answer = UI.messagebox("Model has " + difference.to_s + " layer(s) with non-unique color(s). Fix it?", MB_YESNO)
     layers = random_unique_layers_colors(layers) if answer  == IDYES
   else
     UI.messagebox ("All layers in model have unique colors")
@@ -81,9 +86,10 @@ def self.check_layers_colors
 end
 
 def self.make_unique_layers_color
+  # Make colors of layers unique. For all or non-unique
   model = Sketchup.active_model
   layers = model.layers
-  answer = UI.messagebox("Do you want to change color of layers in model?", MB_YESNO)
+  answer = UI.messagebox("Do you want to change colors of layers in model?", MB_YESNO)
   if answer  == IDYES
     prompts = ["Layers"]
     list = ["Non-unique|All"]
@@ -96,11 +102,12 @@ def self.make_unique_layers_color
   when "All"
     random_all_layers_colors(layers)
   else
-    UI.messagebox("Input Error")
+    UI.messagebox("Failure")
   end
 end
 
 def self.create_new_layer_with_unique_color
+  # Make new layer with unique color
   model = Sketchup.active_model
   layers = model.layers
   template_name = layers.unique_name "Layer"
@@ -112,8 +119,15 @@ def self.create_new_layer_with_unique_color
 end
 
 def self.help_information
-  # button in toolbars
-  # open README PDF-file  or help content in messagebox
+  # open help content in browser
+  plugins = Sketchup.find_support_file "Plugins/"
+  help_file_folder = "unique_layers_colors/help/"
+  help_file = File.join(plugins, help_file_folder, "help.html" )
+  if (help_file)
+    UI.openURL "file://" + help_file
+  else
+    UI.messagebox "Failure"
+  end
 end
 
 end # module LayersColors
@@ -122,15 +136,15 @@ end # module LayersColors
 unless file_loaded?(__FILE__)
   # Create toolbar
   plugins = Sketchup.find_support_file "Plugins/"
-  folder = "unique_layers_colors"
-  icon_s_check_layers_colors = File.join(plugins, folder, "check_layers_colors_16.png")
-  icon_check_layers_colors = File.join(plugins, folder, "check_layers_colors_24.png")
-  icon_s_make_unique_layers_color = File.join(plugins, folder, "make_unique_layers_color_16.png")
-  icon_make_unique_layers_color = File.join(plugins, folder, "make_unique_layers_color_24.png")
-  icon_s_create_new_layer_with_unique_color = File.join(plugins, folder, "create_new_layer_with_unique_color_16.png")
-  icon_create_new_layer_with_unique_color = File.join(plugins, folder, "create_new_layer_with_unique_color_24.png")
-  icon_s_help_information = File.join(plugins, folder, "help_16.png")
-  icon_help_information = File.join(plugins, folder, "help_24.png")
+  icons_folder = "unique_layers_colors/icons"
+  icon_s_check_layers_colors = File.join(plugins, icons_folder, "check_layers_colors_16.png")
+  icon_check_layers_colors = File.join(plugins, icons_folder, "check_layers_colors_24.png")
+  icon_s_make_unique_layers_color = File.join(plugins, icons_folder, "make_unique_layers_color_16.png")
+  icon_make_unique_layers_color = File.join(plugins, icons_folder, "make_unique_layers_color_24.png")
+  icon_s_create_new_layer_with_unique_color = File.join(plugins, icons_folder, "create_new_layer_with_unique_color_16.png")
+  icon_create_new_layer_with_unique_color = File.join(plugins, icons_folder, "create_new_layer_with_unique_color_24.png")
+  icon_s_help_information = File.join(plugins, icons_folder, "help_16.png")
+  icon_help_information = File.join(plugins, icons_folder, "help_24.png")
   unique_layers_colors_tb = UI::Toolbar.new("Unique Layers Colors")
 
   # Add item "Check of layers colors"

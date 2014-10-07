@@ -1,1 +1,24 @@
-﻿
+﻿"en" = "English";
+"ru" = "Russian";
+"Language"="Language";
+"Model has " = "Model has ";
+" layer(s) with non-unique color(s). Fix it?" = " layer(s) with non-unique color(s). Fix it?";
+"All layers in model have unique colors" = "All layers in model have unique colors";
+"DisplayColorByLayer" = "DisplayColorByLayer";
+"EdgeColorMode" = "EdgeColorMode";
+"Do you want to change color of layers in model?" = "Do you want to change color of layers in model?";
+"Layers" = "Layers";
+"Non-unique|All" = "Non-unique|All";
+"Non-unique" = "Non-unique";
+"Random layers colors" = "Random layers colors";
+"Non-unique" = "Non-unique";
+"All" = "All";
+"Input Error" = "Input Error";
+"Layer" = "Layer";
+"Layer" = "Layer";
+"New layer with unique color" = "New layer with unique color";
+"Unique Layers Colors" = "Unique Layers Colors";
+"Check of layers colors" = "Check of layers colors";
+"Make unique layers colors" = "Make unique layers colors";
+"Create new layer with unique color" = "Create new layer with unique color";
+"Help" = "Help";
