@@ -20,7 +20,7 @@ You can find in main menu or in toolbar
 
 *Plugin \> Unique Layers Colors*
 
-1. **Check of layers colors** - Analyse model. When all layers colors in model are unique, you will see message *"All layers in model have unique colors"*. In other case you will see message *"Model has N layer(s) with non-unique color(s). Fix it?""*. If click "Yes", all layers with non-unique colors will be with random unique colors.
+1. **Check of layers colors** - Analyse model. When all layers colors in model are unique, you will see message *"All layers in model have unique colors"*. In other case you will see message *"Model has N layer(s) with non-unique color(s). Fix it?"*. If click "Yes", all layers with non-unique colors will be with random unique colors.
 2. **Make unique layers colors** - Tool to generate new colors for "Non-unique" or "All" layers of model.
 3. **Create new layer with unique color** - This tool can help to generate new layers in model when you need to create only layers with unique colors in the modeling process.
 4. **Help** - Show this file.
