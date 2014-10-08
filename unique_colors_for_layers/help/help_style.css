@@ -5,9 +5,10 @@ body {
 	padding: 0px;
 	background: lightgray;
 }
-p { margin: 20px 20px 20px 20px; }
-h2 {margin: 10px 10px 10px 10px;}
-h3 {margin: 10px 10px 10px 10px;}
+p { margin: 20px; }
+h1{ padding: 20px}
+h2 {margin: 10px;}
+h3 {margin: 10px;}
 
 #layout-wrapper {
 	background-color: white;
@@ -22,8 +23,7 @@ h3 {margin: 10px 10px 10px 10px;}
 #site-header
 {
 	background: #bdbdbd;
-	height: 100px;
-	outline: 2px solid #000;
+	outline: 1px solid #000;
 }
 
 #footer-cleaner {
