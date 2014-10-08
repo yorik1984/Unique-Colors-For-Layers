@@ -3,12 +3,7 @@ Unique colors for layers
 
 **_Changelog_**
 
-<<<<<<< HEAD
 08 october 2014 - *version 1.0 - First release*
-=======
-08 october 2014 *version 1.0 - First release*
->>>>>>> a70f59a5034099cd78353ba2fcf53400e7a129ae
-
 
 Description
 -----------
