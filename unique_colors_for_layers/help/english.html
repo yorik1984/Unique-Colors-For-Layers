@@ -1,38 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>English help</title>
-</head>
-<body>
-	<h1 id="unique-layers-colors">Unique Layers Colors</h1>
-	<p><strong><em>Changelog</em></strong></p>
-	<p><em>version 1.0 - First release</em></p>
-	<h2 id="description">Description</h2>
-	<p>Ruby plugin for Sketchup 2014 to make unique all colors of layers in model.<br>
-	This plugin can help to organize work with layers with more efficiency.<br>
-	Especially when you need export to CAD Sketchup model. It works with colors of layers.<br>
-	Plugin do nothing only with &quot;Layer0&quot;. Colors of other layers can be modify.</p>
-	<ul>
-	<li>Analysis of the model for the presence of layers colors</li>
-	<li>Randomize colors of all or non-unique layers</li>
-	<li>Create new layers with unique colors.</li>
-	</ul>
-	<h2 id="usage">Usage</h2>
-	<p>You can find in main menu or in toolbar</p>
-	<p><em>Plugin > Unique Layers Colors</em></p>
-	<ol>
-	<img src="img/toolbar_with_labels_en.jpg" height = 40% width = 40%>
-	<li><strong>Check of layers colors</strong> - Analyse model. When all layers colors in model are unique, you will see message <em>&quot;All layers in model have unique colors&quot;</em>.<br>
-	In other case you will see message <em>&quot;Model has N layer(s) with non-unique color(s). Fix it?&quot;</em>.<br>
-	If click &quot;Yes&quot;, all layers with non-unique colors will be with random unique colors.</li>
-	<li><strong>Make unique layers colors</strong> - Tool to generate new colors for &quot;Non-unique&quot; or &quot;All&quot; layers of model.</li>
-	<li><strong>Create new layer with unique color</strong> - This tool can help to generate new layers in model when you need to create only layers with unique colors in the modeling process.</li>
-	<li><strong>Help</strong> - Show this file.</li>
-	</ol>
-	<h5 id="-"> </h5>
-	<h2 id="installation">Installation</h2>
-	<p>Plugin works only in Sketchup version 14. Update Sketchup before install.<br>
-	<a href="http://help.sketchup.com/en/article/38583">Installation plugins in Sketchup</a></p>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Unique colors for layers</title>
+		<link rel="stylesheet" href="help_style.css">
+	<body>
+		<div id="layout-wrapper">
+		<header id="site-header">
+		<h1 id="unique-colors-for-layers">Sketchup plugin "Unique colors for layers"</h1>
+		</header>
+		<article id="site-content">
+		<p><strong><em>Changelog</em></strong></p>
+		<p><em>version 1.0 - 08 october 2014 - First release</em></p>
+		<h2 id="description">Description</h2>
+		<p>Ruby plugin for SketchUp 2014 to make all unique colors of layers in each 3D model. This plugin can help you to organize with layers more efficiently. Especially, when you need to export CAD SketchUp model. It works with all
+		layers, except &quot;Layer0&quot; that the colors of other layers can be modified.</p>
+		<p>Plugin features:</p>
+		<ul>
+		<li>Analysis of the model for the presence of colors of layers </li>
+		<li>Randomize colors of all or non-unique layers</li>
+		<li>Create new layers with unique colors.</li>
+		</ul>
+		<h2 id="usage">Usage</h2>
+		<p>You can find in the main menu or toolbar.</p>
+		<p><em>Plugin > Unique colors for layers</em></p>
+		<ol>
+		<li><strong>Check colors of layers</strong> - Analyse colors of layers in existing SketchUp file. When all layer colors in 3D model are unique, you will see message <em>&quot;All layers in model have unique colors&quot;</em>. In other case you will see message <em>&quot;Model has N layer(s) with non-unique color(s). Fix it?&quot;</em>. If click &quot;Yes&quot;, all layers with non-unique colors will be with random unique colors.</li>
+		<li><strong>Make unique colors for layers</strong> - Change new colors for &quot;Non-unique&quot; or &quot;All&quot; layers of 3D model.</li>
+		<li><strong>Create new layer with unique color</strong> - Create new layers when you need to create only layers with unique colors in the 3D modeling process.</li>
+		<li><strong>Help</strong> - Show the plugin manual.</li>
+		</ol>
+		<h5 id="-"> </h5>
+		<h2 id="installation">Installation</h2>
+		<p>Plugin works only in Sketchup 2014. Update SketchUp before install.
+		<a href="http://help.sketchup.com/en/article/38583">Installing Ruby Plugins in SketchUp</a></p>
+
+		<div id="footer-cleaner">
+		</div>
+		</div>
+		<footer id="site-footer">
+			<div class="copyleft">(&#596) 2014 Yurij Kulchevich</div>
+			<div class="site-developer">Source code on <a href="https://github.com/yorik1984/Unique-Colors-For-Layers" target="_blank">github</a></div>
+		</footer>
+
+	</body>
 </html>
