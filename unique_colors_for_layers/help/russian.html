@@ -1,10 +1,49 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Русский текст справки</title>
-</head>
-<body>
-	<p>Русский текст справки</p>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Unique colors for layers</title>
+		<link rel="stylesheet" href="help_style.css">
+	<body>
+		<div id="layout-wrapper">
+		<header id="site-header">
+		<p></p>
+		<h1 align="center">Плагин для Sketchup 2014 "Unique colors for layers"</h1>
+		<p></p>
+		</header>
+		<article id="site-content">
+		<p><strong><em>Список изменений</em></strong></p>
+		<p><em>08 октября 2014 - версия 1.0 - Первый релиз</em></p>
+		<h2>Описание</h2>
+		<p>Плагин для Sketchup 2014 для создания уникальных цветов для слоев модели Sketchup. С помощью этого инструмента можно организовать работу со слоями более эффективно. Особенно, когда необходимо сделать экспорт слоев в AutoCAD. Плагин может менять цвета любого слоя, кроме слоя &quot;Layer0&quot;</p>
+		<p>Список функций:</p>
+		<ul>
+		<li>Анализ цветов слоев модели </li>
+		<li>Изменение слоев имеющих неуникальные цвета случайным образом</li>
+		<li>Создание нового слоя с уникальным цветом</li>
+		</ul>
+		<h2>Использование</h2>
+		<p>Использовать можно как через главное менб программы так и с помощью панели инструментов</p>
+		<p><em>Plugin > Unique colors for layers</em></p>
+		<ol>
+		<img src="img/toolbar_with_labels_ru.jpg" height=80% width=80%>
+		<li><strong>Check colors of layers</strong> (Проверить слои в модели) - Анализ слоев в модели Sketchup. Если все цвета слоев имеют уникальный цвет, то появится сообщение <em>&quot;All layers in model have unique colors&quot;</em>. В другом случае появится сообщение <em>&quot;Model has N layer(s) with non-unique color(s). Fix it?&quot;</em>. Если нажать &quot;Yes&quot;, все слои , которые имеют не уникальные цвета будут иметь уникальный цвет который выбирается случайным образом.</li>
+		<li><strong>Make unique colors for layers</strong> (Сделать цвета слоев уникальными) - Создает уникальные цвета для &quot;Non-unique&quot; (не уникальных) или &quot;All&quot;(Всех) слоев в модели. Предварительная проверка не проводится.</li>
+		<li><strong>Create new layer with unique color</strong> (Создать слой с уникальным цветом) - Создание нового слоя который будет иметь уникальный цвет. будет полезно в том случае, когда надо контролировать уникальность цветов в дальнейшем.</li>
+		<li><strong>Help</strong> (Справка) - Открытие файла справки (этой страницы).</li>
+		</ol>
+		<h5 id="-"> </h5>
+		<h2>Установка</h2>
+		<p>Плагин работает только в Sketchup 2014. Установите новую версию программы перед использованием плагина.
+		<a href="http://help.sketchup.com/en/article/38583">Installing Ruby Plugins in SketchUp</a></p>
+
+		<div id="footer-cleaner">
+		</div>
+		</div>
+		<footer id="site-footer">
+			<div class="copyleft">(&#596) 2014 Yurij Kulchevich</div>
+			<div class="site-developer">Source code on <a href="https://github.com/yorik1984/Unique-Colors-For-Layers" target="_blank">github</a></div>
+		</footer>
+
+	</body>
 </html>
