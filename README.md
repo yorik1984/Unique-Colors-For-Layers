@@ -3,6 +3,7 @@ Unique colors for layers
 
 **_Changelog_**
 
+08 october 2014
 *version 1.0 - First release*
 
 
