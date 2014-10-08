@@ -2,6 +2,7 @@ Unique colors for layers
 ====================
 
 **_Changelog_**
+
 *version 1.0 - First release*
 
 
