@@ -37,11 +37,11 @@ def self.all_colors_of_layers_to_rgb_value(layer_with_full_color_value)
   result_layers
 end
 
-def self.random_unique_colors_of_layer(layers_of_model)
+def self.random_non_unique_colors_of_layers(layers_of_model)
   # Randomize only non-unique layers colors
   layers_of_colors = Array.new(layers_of_model.count)
   layers_of_colors = all_colors_of_layers_to_rgb_value(layers_of_model)
-    1.step(layers_of_colors.count-1, 1) do |i|
+  1.step(layers_of_colors.count-1, 1) do |i|
     while layers_of_colors.find_all{ |elem| elem == colors_of_layers_to_rgb_value(layers_of_model[i]) }.size != 0 && layers_of_colors.count(layers_of_colors[i]) > 1
       layers_of_model[i].color = Sketchup::Color.new(rand(0..255), rand(0..255), rand(0..255))
     end
@@ -76,7 +76,7 @@ def self.check_colors_of_layers
   if layers_rgb_colors != layers_rgb_colors.uniq
     difference = layers_rgb_colors.size - layers_rgb_colors.uniq.size
     answer = UI.messagebox("Model has #{difference.to_s} layer(s) with non-unique color(s). Fix it?", MB_YESNO)
-    layers = random_unique_colors_of_layers(layers) if answer  == IDYES
+    layers = random_non_unique_colors_of_layers(layers) if answer  == IDYES
   else
     UI.messagebox ("All layers in model have unique colors")
   end
@@ -98,7 +98,7 @@ def self.make_unique_colors_for_layers
   end
   case input[0]
   when "Non-unique"
-    random_unique_colors_of_layers(layers)
+    random_non_unique_colors_of_layers(layers)
   when "All"
     random_all_colors_of_layers(layers)
   else
@@ -115,13 +115,17 @@ def self.create_new_layer_with_unique_color
   defaults = [template_name]
   input = UI.inputbox(prompts, defaults, "New layer with unique color")
   new_layer = layers.add input[0]
-  random_unique_colors_of_layer(layers)
+  layers_of_colors = Array.new(layers.count)
+  layers_of_colors = all_colors_of_layers_to_rgb_value(layers)
+  while layers_of_colors.find_all{ |elem| elem == colors_of_layers_to_rgb_value(new_layer) }.size != 0
+    new_layer.color = Sketchup::Color.new(rand(0..255), rand(0..255), rand(0..255))
+  end
 end
 
 def self.help_information
   # open help content in browser
   plugins = Sketchup.find_support_file "Plugins/"
-  help_file_folder = "unique_layers_colors/help/"
+  help_file_folder = "unique_colors_for_layers/help/"
   help_file = File.join(plugins, help_file_folder, "help.html" )
   if (help_file)
     UI.openURL "file://" + help_file
@@ -175,8 +179,8 @@ unless file_loaded?(__FILE__)
   help_cmd = UI::Command.new("Help"){ LayersColors::help_information }
   help_cmd.small_icon = icon_s_help_information
   help_cmd.large_icon = icon_help_information
-  help_cmd.tooltip = "Help"
-  help_cmd.status_bar_text = "Help"
+  help_cmd.tooltip = "Open in browser"
+  help_cmd.status_bar_text = "Open in browser"
   unique_layers_colors_tb.add_item(help_cmd)
 
   # Create menu
