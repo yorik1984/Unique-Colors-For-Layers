@@ -179,7 +179,7 @@ unless file_loaded?(__FILE__)
   help_cmd = UI::Command.new("Help"){ LayersColors::help_information }
   help_cmd.small_icon = icon_s_help_information
   help_cmd.large_icon = icon_help_information
-  help_cmd.tooltip = "Open in browser"
+  help_cmd.tooltip = "Help"
   help_cmd.status_bar_text = "Open in browser"
   unique_layers_colors_tb.add_item(help_cmd)
 
